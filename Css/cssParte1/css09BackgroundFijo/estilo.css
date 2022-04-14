@@ -32,5 +32,8 @@ div.caja{
     
     background-image: url('./frutas.PNG');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-position: center;
+    background-size: cover; 
 }
+
+/*Se deja background-size: cover;  ya que al usar contain y cambiamos el formato de la ventana se pierde el fondo.*/
