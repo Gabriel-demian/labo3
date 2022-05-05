@@ -39,3 +39,12 @@ ul {
 #menu > li:hover > ul {
   display: block;
 }
+
+@media screen and (max-width : 800px){
+    
+    a {
+        font-size: 2em;
+    }
+
+}
+
