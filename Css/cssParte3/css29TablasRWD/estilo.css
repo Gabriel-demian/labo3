@@ -1,16 +1,81 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing:border-box;    
+    font-size: 20px;
 }
-
-html, body, tbody, tr {
-    width: 100%;
-}
-
 tbody tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.2);
 }
 
-td, th {
-    width: 20%;
+tbody
+{ 
+    height: 300px;
+    display: block;
+    overflow: auto;
+}
+
+h1 {
+    width: 100%;
+    background-color: gray;
+    height:fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+thead , tbody, tr
+{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+tr {
+    border: 2px;
+    border-style: solid;
+    border-color: gray;
+    height: 20px;
+}
+
+.tabla {
+    font-family: Helvetica;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+@media screen and (max-width:1000px) {
+    h1{
+        font-size: 1.5em;
+    }
+    [campo-dato='skype']
+    {   
+        display: none;
+    }
+    [campo-dato='twitter']
+    {   
+        display: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+    h1{
+        font-size: 2em;
+    }
+    [campo-dato='mail']
+    {   
+        display: none;
+    }
+    [campo-dato='web']
+    {   
+        display: none;
+    }
+    [campo-dato='skype']
+    {   
+        display: none;
+    }
+    [campo-dato='twitter']
+    {   
+        display: none;
+    }
 }
