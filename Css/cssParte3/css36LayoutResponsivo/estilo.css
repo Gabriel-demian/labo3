@@ -1,9 +1,12 @@
 *{
     margin:0;
     padding:0;
-    box-sizing:border-box;    
     font-size: 24px;
-    overflow: hidden;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
 }
 
 .clear{
@@ -18,7 +21,6 @@
     align-items: center;
     padding: 15px;
     background-color: lightblue;
-
 }
 
 .menu{
@@ -38,21 +40,24 @@
 
 .contenido{
     width: 90%;
-    background-color: lightblue;
     margin: auto;
-    
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     display: block;
+    overflow-y: auto;
 }
 
 .texto{
-    column-count: 5;
+    box-sizing: border-box;
+    
     float: left;
-    display: block;
+    width: 100%;
+    height: 74%;
+    column-count: 5;
     overflow: auto;
-
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -69,12 +74,27 @@ img {
     width: 150px;
 }
 
-.pie{
-    float: left;
+.pie {
+    box-sizing: border-box;
+    width: 100%;
+    height: 10%;
+    background-color: lightblue;
+    color: red;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
-    width: 100%;
-    padding: 25px;
+}
+
+@media screen and (max-width:1000px) {
+    .texto {
+        column-count: 3;
+    }
+}
+
+
+@media screen and (max-width : 680px){
+    
+    .texto {
+        column-count: 1;
+    }
 }
