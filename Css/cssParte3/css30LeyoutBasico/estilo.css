@@ -77,3 +77,18 @@ li:hover
     background-color: coral;
     padding: 25px;
 }
+
+@media screen and (max-width:1000px) {
+    
+    *{
+        font-size: 30px;
+    }
+
+    h1{
+        font-size: 35px;
+    }
+
+    .contenido{
+        width: 100%;
+    }
+}
