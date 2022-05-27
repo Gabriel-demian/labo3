@@ -1,12 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    --color1: #415380;
-    --color2: #aee5d1;
-    --color3: #f2f2f2;
-    --color4: #e4e4e4;
-    --color5: #1a3f73;
 }
 
 body {
@@ -23,7 +17,7 @@ header {
     background-color: blue;
     padding-top: 1rem;
     box-sizing: border-box;
-    color: var(--color3);
+    color: white;
 }
 
 button {
@@ -74,7 +68,7 @@ td {
     border-bottom: 0.5px solid lightblue;
     border-right: 0.5px solid lightblue;
     transition: 0.3s;
-    color: var(--color3);
+    color: black;
 }
 
 .table {
