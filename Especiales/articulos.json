@@ -1,0 +1,28 @@
+{
+    "articulos": [
+        {
+            "codArt": "ALM00",
+            "familia": "FRSEC",
+            "descripcion": "Alemendras Peladas",
+            "um": "KG",
+            "fechaAlta": "2020-06-15",
+            "saldoStock": "233"
+        },
+        {
+            "codArt": "ALM00",
+            "familia": "FRSEC",
+            "descripcion": "Alemendras Peladas",
+            "um": "KG",
+            "fechaAlta": "2020-06-15",
+            "saldoStock": "233"
+        },
+        {
+            "codArt": "ALM00",
+            "familia": "FRSEC",
+            "descripcion": "Alemendras Peladas",
+            "um": "KG",
+            "fechaAlta": "2020-06-15",
+            "saldoStock": "233"
+        }
+    ]
+}
