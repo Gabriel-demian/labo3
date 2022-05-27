@@ -85,7 +85,6 @@ select:focus {
 }
 
 .form-desc,
-.form-acerca,
 .form-button {
     display: block;
     width: 100%;
@@ -95,11 +94,6 @@ select:focus {
 .form-desc,
 .form-button {
     height: 4rem;
-}
-
-.form-acerca {
-    height: 12rem;
-    clear: right;
 }
 
 .form-button {
