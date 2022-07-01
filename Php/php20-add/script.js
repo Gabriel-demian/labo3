@@ -19,13 +19,16 @@ function cambiarOrden(e) {
 }
 
 function traerJson() {
+
+    console.log($orden.value);
+
     jQuery.ajax({
         type: "GET",
         url: "./database.php",
+        data: { orden: $orden.value},
         success: function(respuestaDelServer) {
             var objJson=JSON.parse(respuestaDelServer);
             armarTabla(objJson);
-            
         }//cierra funcion asignada al success
     });//cierra ajax
 
@@ -66,7 +69,7 @@ function armarTabla(json) {
         $tabla.appendChild(tr);
     });
 
-    //document.getElementById("nRegistro").innerHTML = `Numero de registros: ${json.cantidad}`;
+    document.getElementById("numRegistro").innerHTML = `Numero de registros: ${json.cuenta}`;
 }
 
 

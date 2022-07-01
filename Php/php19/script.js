@@ -19,23 +19,32 @@ function cambiarOrden(e) {
 }
 
 function traerJson() {
-    jQuery.ajax({
-        type: "GET",
-        url: "./database.php",
-        success: function(respuestaDelServer) {
-            var objJson=JSON.parse(respuestaDelServer);
-            armarTabla(objJson);
-            
-        }//cierra funcion asignada al success
-    });//cierra ajax
-
+    let datos = new FormData;
+    datos.append("registro", $registro.value);
+    datos.append("proyecto", $proyecto.value);
+    datos.append("referente", $referente.value);
+    datos.append("pais", $pais.value);
+    datos.append("inicio", $inicio.value);
+    datos.append("ingresos", $ingresos.value);
+    datos.append("orden", $orden.value);
+    
+    fetch("database.php", {
+        method: 'POST',
+        body: datos
+    }) 
+    .then(res => res.json() )
+    .then(json => armarTabla(json))
+    .catch(error => console.error('Error: ', error))
+    .finally(()=> {
+        setTimeout(()=>{},1500);
+    })
 }
 
 const $tabla = document.querySelector("#tabla");
 
 function armarTabla(json) {
     vaciarTabla();
-    json.proyectos.forEach(elemento => {
+    json.agentes.forEach(e => {
         let tr = document.createElement("tr"),
 
         tdRegistro = document.createElement("td"),
@@ -45,28 +54,28 @@ function armarTabla(json) {
         tdInicio = document.createElement("td"),
         tdIngresos = document.createElement("td");
 
-        tdRegistro.innerHTML = elemento.registro;
+        tdRegistro.innerHTML = e.registro;
         tr.appendChild(tdRegistro);
 
-        tdProyecto.innerHTML = elemento.proyecto;
+        tdProyecto.innerHTML = e.proyecto;
         tr.appendChild(tdProyecto);
 
-        tdReferente.innerHTML = elemento.referente;
+        tdReferente.innerHTML = e.referente;
         tr.appendChild(tdReferente);
 
-        tdPais.innerHTML = elemento.pais;
+        tdPais.innerHTML = e.pais;
         tr.appendChild(tdPais);
 
-        tdInicio.innerHTML = elemento.inicio;
+        tdInicio.innerHTML = e.inicio;
         tr.appendChild(tdInicio);
 
-        tdIngresos.innerHTML = elemento.ingresos;
+        tdIngresos.innerHTML = e.ingresos;
         tr.appendChild(tdIngresos);
 
         $tabla.appendChild(tr);
     });
 
-    //document.getElementById("nRegistro").innerHTML = `Numero de registros: ${json.cantidad}`;
+    document.getElementById("nRegistro").innerHTML = `Numero de registros: ${json.cantidad}`;
 }
 
 

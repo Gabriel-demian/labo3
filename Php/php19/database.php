@@ -10,7 +10,7 @@
         $dsn = "mysql:host=$host;dbname=$dbname";
         $dbh = new PDO($dsn, $user, $password); /*Database Handle*/ 
         $respuesta_estado = $respuesta_estado . "\nconexion exitosa"; 
-        //echo ("exito");
+        echo ("exito");
     } catch (PDOException $e) { 
         $respuesta_estado = $respuesta_estado . "\n" . $e->getMessage(); 
         echo ("falló");
@@ -39,10 +39,9 @@
     $objProyecto->proyectos=$proyectos; 
     $objProyecto->cuenta=count($proyectos);
 
-    //$salidaJson = json_encode($objProyecto);
+    $salidaJson = json_encode($objProyecto);
 
     $dbh = null;
 
-    //echo $salidaJson;
-    echo json_encode($objProyecto);
+    echo $salidaJson;
 ?>

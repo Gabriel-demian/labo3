@@ -16,7 +16,32 @@
         echo ("falló");
     }
 
+    
+
     $sql="select * from proyectos " ;
+
+    
+
+    switch($_GET['orden']){
+        case "registro":
+            $sql = $sql . "ORDER BY registro ";
+            break; 
+        case "proyecto":
+            $sql = $sql . "ORDER BY proyecto ";
+            break;
+        case "referente":
+            $sql = $sql . "ORDER BY referente ";
+            break;  
+        case "pais":
+            $sql = $sql . "ORDER BY pais ";
+            break; 
+        case "inicio":
+            $sql = $sql . "ORDER BY inicio ";
+            break;
+        case "ingresos":
+            $sql = $sql . "ORDER BY ingresos ";
+            break;   
+    }
 
     $stmt = $dbh->prepare($sql);
 
@@ -39,10 +64,7 @@
     $objProyecto->proyectos=$proyectos; 
     $objProyecto->cuenta=count($proyectos);
 
-    //$salidaJson = json_encode($objProyecto);
-
     $dbh = null;
 
-    //echo $salidaJson;
     echo json_encode($objProyecto);
 ?>
