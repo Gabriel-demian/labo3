@@ -20,12 +20,30 @@
 
     $sql="select * from proyectos " ;
     
+    $flag = 0;  
+
     if(($_GET['registro'])!="" or ($_GET['proyecto'])!="" or ($_GET['referente'])!="" 
     or ($_GET['pais'])!="" or ($_GET['inicio'])!="" or ($_GET['ingresos'])!=""){
         $sql = $sql . " WHERE ";
-        if (($_GET['registro'])!="") $sql = $sql . "registro LIKE '%" . $_GET['registro'] . "%' ";
-        
     }
+
+    
+    if (($_GET['registro'])!=""){ 
+        $sql = $sql . "registro LIKE '%" . $_GET['registro'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['proyecto'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "proyecto LIKE '%" . $_GET['proyecto'] . "%' ";
+        $flag = 1;
+    }
+
+
+
+
     
     switch($_GET['orden']){
         case "registro":
