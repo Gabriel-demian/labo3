@@ -15,9 +15,7 @@
         $respuesta_estado = $respuesta_estado . "\n" . $e->getMessage(); 
         echo ("falló");
     }
-
     
-
     $sql="select * from proyectos " ;
     
     $flag = 0;  
@@ -41,7 +39,37 @@
         $flag = 1;
     }
 
+    if (($_GET['referente'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "referente LIKE '%" . $_GET['referente'] . "%' ";
+        $flag = 1;
+    }
 
+    if (($_GET['pais'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "pais LIKE '%" . $_GET['pais'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['inicio'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "inicio LIKE '%" . $_GET['inicio'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['ingresos'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "ingresos LIKE '%" . $_GET['ingresos'] . "%' ";
+        $flag = 1;
+    }
 
 
     
