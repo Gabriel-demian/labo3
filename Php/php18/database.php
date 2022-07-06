@@ -15,8 +15,85 @@
         $respuesta_estado = $respuesta_estado . "\n" . $e->getMessage(); 
         echo ("falló");
     }
-
+    
     $sql="select * from proyectos " ;
+    
+    $flag = 0;  
+
+    if(($_GET['registro'])!="" or ($_GET['proyecto'])!="" or ($_GET['referente'])!="" 
+    or ($_GET['pais'])!="" or ($_GET['inicio'])!="" or ($_GET['ingresos'])!=""){
+        $sql = $sql . " WHERE ";
+    }
+
+    
+    if (($_GET['registro'])!=""){ 
+        $sql = $sql . "registro LIKE '%" . $_GET['registro'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['proyecto'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "proyecto LIKE '%" . $_GET['proyecto'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['referente'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "referente LIKE '%" . $_GET['referente'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['pais'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "pais LIKE '%" . $_GET['pais'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['inicio'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "inicio LIKE '%" . $_GET['inicio'] . "%' ";
+        $flag = 1;
+    }
+
+    if (($_GET['ingresos'])!=""){ 
+        if($flag == 1){
+            $sql = $sql . " and ";
+        }
+        $sql = $sql . "ingresos LIKE '%" . $_GET['ingresos'] . "%' ";
+        $flag = 1;
+    }
+
+
+    
+    switch($_GET['orden']){
+        case "registro":
+            $sql = $sql . "ORDER BY registro ";
+            break; 
+        case "proyecto":
+            $sql = $sql . "ORDER BY proyecto ";
+            break;
+        case "referente":
+            $sql = $sql . "ORDER BY referente ";
+            break;  
+        case "pais":
+            $sql = $sql . "ORDER BY pais ";
+            break; 
+        case "inicio":
+            $sql = $sql . "ORDER BY inicio ";
+            break;
+        case "ingresos":
+            $sql = $sql . "ORDER BY ingresos ";
+            break;   
+    }
+
 
     $stmt = $dbh->prepare($sql);
 
@@ -39,10 +116,7 @@
     $objProyecto->proyectos=$proyectos; 
     $objProyecto->cuenta=count($proyectos);
 
-    //$salidaJson = json_encode($objProyecto);
-
     $dbh = null;
 
-    //echo $salidaJson;
     echo json_encode($objProyecto);
 ?>

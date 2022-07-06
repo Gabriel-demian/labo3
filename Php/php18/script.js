@@ -1,11 +1,11 @@
 const 
-    $registro = document.querySelector("#registro"),
-    $proyecto = document.querySelector("#proyecto"),
-    $referente = document.querySelector("#referente"),
-    $pais = document.querySelector("#pais"),
-    $inicio = document.querySelector("#inicio"),
-    $ingresos = document.querySelector("#ingresos"),
-    $orden = document.querySelector("#orden")
+    $registro = document.querySelector("#f_registro"),
+    $proyecto = document.querySelector("#f_proyecto"),
+    $referente = document.querySelector("#f_referente"),
+    $pais = document.querySelector("#f_pais"),
+    $inicio = document.querySelector("#f_inicio"),
+    $ingresos = document.querySelector("#f_ingresos"),
+    $orden = document.querySelector("#f_orden")
 ;
     
 function vaciarTabla() {
@@ -19,13 +19,25 @@ function cambiarOrden(e) {
 }
 
 function traerJson() {
+
+    console.log($orden.value);
+
     jQuery.ajax({
         type: "GET",
         url: "./database.php",
+        data: { 
+            orden: $orden.value,
+            registro : $registro.value,
+            proyecto : $proyecto.value,
+            referente : $referente.value,
+            pais : $pais.value,
+            inicio : $inicio.value,
+            ingresos : $ingresos.value
+        },
         success: function(respuestaDelServer) {
             var objJson=JSON.parse(respuestaDelServer);
+            console.log(objJson);
             armarTabla(objJson);
-            
         }//cierra funcion asignada al success
     });//cierra ajax
 
@@ -66,7 +78,7 @@ function armarTabla(json) {
         $tabla.appendChild(tr);
     });
 
-    //document.getElementById("nRegistro").innerHTML = `Numero de registros: ${json.cantidad}`;
+    document.getElementById("numRegistro").innerHTML = `Numero de registros: ${json.cuenta}`;
 }
 
 
